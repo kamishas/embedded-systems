@@ -1,0 +1,37 @@
+### Hardware Setup
+
+To simulate the traffic signal, you will need the following hardware components:
+- LEDs to represent the traffic lights.
+- Sensors to detect the presence of vehicles.
+- A servo motor to simulate the movement of a railroad crossing or similar mechanism.
+- A buzzer for audible signaling.
+
+Connect these components to the designated GPIO pins on the BeagleBone. Ensure each LED, sensor, servo motor, and the buzzer is connected to the pins defined in the source code.
+
+### Installation
+
+Follow these steps to compile and run the simulation:
+
+1. Export the necessary PWM pins for the servo motor:
+   ```shell
+   echo 0 > /sys/class/pwm/pwmchip4/export
+
+
+
+gcc -o traincrossing traincrossing_code.c -pthread
+
+
+sudo ./traincrossing
+
+
+
+When you run the simulation, the system will prompt you to input GPIO numbers for the sensors, LEDs, servo motor, and buzzer. Input the corresponding GPIO numbers that match your BeagleBone’s hardware setup.
+
+For example:
+
+Enter GPIO pin number for sensor 1 (train approaching from left):
+Enter GPIO pin number for sensor 2 (train leave from left):
+Enter GPIO pin number for LED 1 (red light):
+Enter GPIO pin number for LED 2 (green light):
+Enter PWM number for servo motor:
+Enter GPIO pin number for the buzzer:
